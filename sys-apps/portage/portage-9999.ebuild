@@ -10,17 +10,13 @@ PYTHON_COMPAT=(
 	python3_3 python3_4 python3_5
 	python2_7
 )
-# Note: substituted below
+# Note: substituted below 
 PYTHON_REQ_USE='bzip2(+)'
 
-inherit distutils-r1 multilib
+inherit distutils-r1 multilib git-r3
 
-if [ ${PV} == "9999" ] ; then
-	inherit git-r3
-	EGIT_REPO_URI="https://github.com/antematherian/${PN}-243.git"
-	EGIT_BRANCH="master"
-else
-	SRC_ARCHIVES="https://dev.gentoo.org/~dolsen/releases/portage"
+EGIT_REPO_URI="https://github.com/antematherian/${PN}-243.git"
+EGIT_BRANCH="portage-244"
 
 	prefix_src_archives() {
 		local x y
@@ -88,16 +84,6 @@ pkg_setup() {
 	use epydoc && DISTUTILS_ALL_SUBPHASE_IMPLS=( python2.7 )
 }
 
-#The patches fix the following issues, in the following order:
-#FL-3333
-#FL-3687
-#FL-3755
-
-PATCHES=(
-	"${FILESDIR}/${PN}-revert-git-sync.patch"
-	"${FILESDIR}/${PN}-add-sync-branch.patch" 
-	"${FILESDIR}/${PN}-add-ceresia-distfile-mirrors.patch"
-)
 python_prepare_all() {
 	distutils-r1_python_prepare_all
 
