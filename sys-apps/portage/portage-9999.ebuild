@@ -18,21 +18,6 @@ inherit distutils-r1 multilib git-r3
 EGIT_REPO_URI="https://github.com/antematherian/${PN}-243.git"
 EGIT_BRANCH="portage-244"
 
-	prefix_src_archives() {
-		local x y
-		for x in ${@}; do
-			for y in ${SRC_ARCHIVES}; do
-				echo ${y}/${x}
-			done
-		done
-}
-
-	TARBALL_PV=2.3.2
-	SRC_URI="mirror://gentoo/${PN}-${TARBALL_PV}.tar.bz2
-		$(prefix_src_archives ${PN}-${TARBALL_PV}.tar.bz2)"
-	S=$WORKDIR/portage-$TARBALL_PV
-fi
-
 LICENSE="GPL-2"
 KEYWORDS="*"
 SLOT="0"
@@ -291,4 +276,6 @@ pkg_postinst() {
 				-exec chown -R portage:portage {} +
 		fi
 	fi
+	#Remove old gentoo repos.conf entry":
+	post_pkg_install
 }
