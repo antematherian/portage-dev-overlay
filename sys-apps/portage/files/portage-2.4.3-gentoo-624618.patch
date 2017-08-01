@@ -1,0 +1,24 @@
+
+m 7bde994be9992d4b72d15ae790d9d4580614c809 Mon Sep 17 00:00:00 2001
+From: Bruno Henc <hencb@protonmail.ch>
+Date: Wed, 26 Jul 2017 18:40:39 +0000
+Subject: [PATCH] Gentoo 624618 workaround, method a)
+
+---
+ pym/portage/package/ebuild/doebuild.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/pym/portage/package/ebuild/doebuild.py b/pym/portage/package/ebuild/doebuild.py
+index 52dbf8b..e2cc76a 100644
+--- a/pym/portage/package/ebuild/doebuild.py
++++ b/pym/portage/package/ebuild/doebuild.py
+@@ -1424,7 +1424,7 @@ def __init__(self, mydb):
+ 			return 1
+ 
+ 	if not pkg.built and \
+-		mydo not in ("digest", "help", "manifest") and \
++		mydo not in ("digest", "help", "manifest", "fetch") and \
+ 		pkg._metadata["REQUIRED_USE"] and \
+ 		eapi_has_required_use(pkg.eapi):
+ 		result = check_required_use(pkg._metadata["REQUIRED_USE"],
+

@@ -1,0 +1,24 @@
+--- a/cnf/make.globals	2017-08-01 21:57:42.942410433 +0200
++++ b/cnf/make.globals	2017-08-01 22:17:56.274241698 +0200
+@@ -23,14 +23,18 @@
+ # Approved by the mirror-admin team.
+ GENTOO_MIRRORS="http://distfiles.gentoo.org"
+ 
++#FL-3755: add Funtoo distfile mirrors for increased quality of service
++GENTOO_MIRRORS ="${GENTOO_MIRRORS} https://distfiles.ceresia.net"
++
+ ACCEPT_LICENSE="* -@EULA"
+ ACCEPT_PROPERTIES="*"
+ ACCEPT_RESTRICT="*"
+ 
++#FL-3986: update paths to function better with kits
+ # Miscellaneous paths
+-DISTDIR="/usr/portage/distfiles"
+-PKGDIR="/usr/portage/packages"
+-RPMDIR="/usr/portage/rpm"
++DISTDIR="/var/cache/portage/distfiles"
++PKGDIR="/var/cache/portage/packages"
++RPMDIR="/var/cache/portage/rpm"
+ 
+ # Temporary build directory
+ PORTAGE_TMPDIR="/var/tmp"
