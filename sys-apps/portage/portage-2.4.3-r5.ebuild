@@ -183,6 +183,9 @@ python_install_all() {
 
 	distutils-r1_python_install_all
 
+#	insinto /etc/portage/repos.conf
+#	doins ${FILESDIR}/gentoo
+
 	local targets=()
 	use doc && targets+=( install_docbook )
 	use epydoc && targets+=( install_epydoc )
